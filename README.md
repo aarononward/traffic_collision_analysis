@@ -5,6 +5,7 @@
     - What areas in SF have the highest density of collisions
     - What conditions lead to a higher frequency of collisions? (i.e. time of day, weather)
     - Where are the most dangerous locations, and what is causing them to be dangerous?
+        - Which locations have the most injuries/casualities?     
     - Investigate factors that contribute to the increased frequency of collisions at these locations (e.g., road design, traffic volume, etc.).
     - Are there certain areas of SF that have different types of collisions? (i.e. are there more pedestrian vs. vehicle collisions in areas like Golden Gate Park as compared to the Financial District)
     - Was traffic safer during the pandemic compared to now? 
