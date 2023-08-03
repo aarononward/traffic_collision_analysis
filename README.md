@@ -8,7 +8,6 @@
     - Analyze the traffic collision data to identify locations with the highest number of collisions.
     - Investigate factors that contribute to the increased frequency of collisions at these locations (e.g., road design, traffic volume, etc.).
     - Are there certain areas of SF that have different types of collisions? (i.e. are there more pedestrian vs. vehicle collisions in areas like Golden Gate Park as compared to the Financial District)
-    - If we can find a speed trap API we can combine and see if those areas have high frequency of collisions or low frequency of collisions. 
     - Was traffic safer during the pandemic compared to now? 
         - If we can incorporate yearly data we can compare collisions during the pandemic to now and make the argument that people working from home is safer for society compared to people commuting into the offices everyday.
 --------------
