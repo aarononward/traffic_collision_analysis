@@ -1,6 +1,7 @@
 # Traffic Collision Analysis
-City of SF Traffic Collision Data 
-API: https://data.sfgov.org/Public-Safety/Traffic-Crashes-Resulting-in-Injury/ubvf-ztfx 
+#### City of SF Traffic Collision Data 
+--------------
+#### API: https://data.sfgov.org/Public-Safety/Traffic-Crashes-Resulting-in-Injury/ubvf-ztfx 
 - Questions: where are the most dangerous located and what is causing them to be dangerous?
     - What areas in SF have the highest density of collisions
     - What conditions lead to a higher frequency of collisions? (i.e. time of day, weather)
@@ -11,7 +12,8 @@ API: https://data.sfgov.org/Public-Safety/Traffic-Crashes-Resulting-in-Injury/ub
     - If we can find a speed trap API we can combine and see if those areas have high frequency of collisions or low frequency of collisions. 
     - Was traffic safer during the pandemic compared to now? 
         - If we can incorporate yearly data we can compare collisions during the pandemic to now and make the argument that people working from home is safer for society compared to people commuting into the offices everyday.
-PROCESS:
+--------------
+#### PROCESS:
  - Request API endpoint using the crash data (zz)
  - Use pandas to clean up the data received (zz)
  - Save this data as a SQLite database (zz)
@@ -24,7 +26,8 @@ PROCESS:
  - Fetches tile layers and sets up the map(ar)
  - Uses d3 to fetch data from the endpoint (from flask app)
  - Create style .css file
-AUDIENCE:
+--------------
+#### AUDIENCE:
  - Urban planners
  - First Responders
  - Insurance Companies
