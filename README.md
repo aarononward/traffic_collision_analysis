@@ -17,6 +17,11 @@
  - Save this data as a SQLite database (zz)
  - Create a flask app with different endpoints (ar)
         - One endpoint should read from the SQLite database and return a jsonified result
+            - Graphs:
+               - Crash data per year bar graphs
+               - Crash data 2018 - 2023 line graph
+            - Map for crash data
+               - 
  - Create an html index file that: (JL)
  - Accesses all the libraries used in the dashboard
  - Display all the page content we want to show
