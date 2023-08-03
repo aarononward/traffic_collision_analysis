@@ -12,21 +12,20 @@
         - If we can incorporate yearly data we can compare collisions during the pandemic to now and make the argument that people working from home is safer for society compared to people commuting into the offices everyday.
 --------------
 #### PROCESS:
- - Request API endpoint using the crash data (zz)
- - Use pandas to clean up the data received (zz)
- - Save this data as a SQLite database (zz)
- - Create a flask app with different endpoints (ar)
-        - One endpoint should read from the SQLite database and return a jsonified result
-            - Graphs:
-               - Crash data per year bar graphs
-               - Crash data 2018 - 2023 line graph
-            - Map for crash data
-               - 
- - Create an html index file that: (JL)
+ - Request API endpoint using the crash data
+ - Use pandas to clean up the data received
+ - Save this data as a SQLite database
+ - Create a flask app with different endpoints
+     - One endpoint should read from the SQLite database and return a jsonified result
+         - Graphs:
+             - Crash data per year bar graphs
+             - Crash data 2018 - 2023 line graph
+         - Map for crash data
+ - Create an html index file
  - Accesses all the libraries used in the dashboard
  - Display all the page content we want to show
- - Create logic js file (JL)
- - Fetches tile layers and sets up the map(ar)
+ - Create logic js file
+ - Fetches tile layers and sets up the map
  - Uses d3 to fetch data from the endpoint (from flask app)
  - Create style .css file
 --------------
