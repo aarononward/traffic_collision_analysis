@@ -12,24 +12,24 @@ API: https://data.sfgov.org/Public-Safety/Traffic-Crashes-Resulting-in-Injury/ub
     - Was traffic safer during the pandemic compared to now? 
         - If we can incorporate yearly data we can compare collisions during the pandemic to now and make the argument that people working from home is safer for society compared to people commuting into the offices everyday.
 PROCESS:
-Request API endpoint using the crash data (zz)
-Use pandas to clean up the data received (zz)
-Save this data as a SQLite database (zz)
-Create a flask app with different endpoints (ar)
-One endpoint should read from the SQLite database and return a jsonified result
-Create an html index file that: (JL)
-Accesses all the libraries used in the dashboard
-Display all the page content we want to show
-Create logic js file (JL)
-Fetches tile layers and sets up the map(ar)
-Uses d3 to fetch data from the endpoint (from flask app)
-Create style .css file
+ - Request API endpoint using the crash data (zz)
+ - Use pandas to clean up the data received (zz)
+ - Save this data as a SQLite database (zz)
+ - Create a flask app with different endpoints (ar)
+        - One endpoint should read from the SQLite database and return a jsonified result
+ - Create an html index file that: (JL)
+ - Accesses all the libraries used in the dashboard
+ - Display all the page content we want to show
+ - Create logic js file (JL)
+ - Fetches tile layers and sets up the map(ar)
+ - Uses d3 to fetch data from the endpoint (from flask app)
+ - Create style .css file
 AUDIENCE:
-Urban planners
-First Responders
-Insurance Companies
-Traffic Engineers
-Logistic Companies
-Police Departments
-Law Enforcement
-Business wfh policies
+ - Urban planners
+ - First Responders
+ - Insurance Companies
+ - Traffic Engineers
+ - Logistic Companies
+ - Police Departments
+ - Law Enforcement
+ - Business wfh policies
