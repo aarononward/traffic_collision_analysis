@@ -1,6 +1,5 @@
 # Traffic Collision Analysis
 #### City of SF Traffic Collision Data 
---------------
 #### API: https://data.sfgov.org/Public-Safety/Traffic-Crashes-Resulting-in-Injury/ubvf-ztfx 
 - Questions: where are the most dangerous located and what is causing them to be dangerous?
     - What areas in SF have the highest density of collisions
