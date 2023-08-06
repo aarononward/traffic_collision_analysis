@@ -11,15 +11,15 @@ function createMap(trafficCollisions) {
    
    let overlayMaps = {
      "Traffic Collisions": trafficCollisions,
-     "Collisions with Injuries" : injuryCollisions,
-     "Collisions with Casualties" : casualtyCollisions
+     //"Collisions with Injuries" : injuryCollisions,
+     //"Collisions with Casualties" : casualtyCollisions
    };
  
    // create the mab object with options/
    let map = L.map("map-id", {
      center: [37.75709, -122.43979],
      zoom: 12,
-     layers: [streetmap, injuryCollisions, casualtyCollisions]
+     layers: [streetmap, trafficCollisions]// injuryCollisions, casualtyCollisions]
    });
  
    //Create layer control and pass it baseMaps and overlayMap. add the layer control to the map/
@@ -49,34 +49,36 @@ function createMap(trafficCollisions) {
    let collisions= []
      for (let  i = 0; i< response.length; i++) {
        let collision = response[i]
-       if (collision.tb_latitude === null || collision.tb_latitude === undefined){
-         delete collision;
+       if (collision.tb_latitude !== null && collision.tb_latitude !== undefined &&  collision.tb_longitude !== null && collision.tb_longitude !== undefined){
+         collisions.push(collision);
        }
      }
- 
-     
+     console.log(collisions.length)
+    
+    
      let collisionMarkers = [];
  
-         for (let i = 0; i < response.length; i++) {
+        for (let i = 0; i < collisions.length; i++) {
              //let cleanLat = response.getDataRange().getValues()
              //let cleanCollisions = cleanLat.tb_longitude.getValues()
-             let cleanCollisions = []
-             //let collision = cleanCollisions[i]
-             let collision = response[i];  
-             if (collision.tb_latitude !== null 
-               && collision.tb_latitude !== undefined 
-               && collision.tb_longitude !== null 
-               && collision.tb_longitude !== undefined 
-               ) 
-               {
+             //let cleanCollisions = []
+             let cleanCollision = collisions[i]
+             //let collision = response[i];  
+            
+             //if (cleanCollision.tb_latitude !== null 
+             //  && cleanCollision.tb_latitude !== undefined 
+             //  && cleanCollision.tb_longitude !== null 
+             //  && cleanCollision.tb_longitude !== undefined 
+            // ) 
+             //  {
                //Object.keys(collision).forEach((item) => 
                //{collision.tb_latitude  == parseFloat(collision.tb_latitude) 
                //  && collision.tb_longitude == parseFloat(collision.tb_longitude)})
                  //parseFloat(collision.tb_latitude);
                //parseFloat(collision.tb_longitude);
-               cleanCollisions.push(collision);
+              // cleanCollisions.push(cleanCollision);
              
-             }
+              // }
              
              
              //console.log(cleanCollisions.length)
@@ -99,7 +101,7 @@ function createMap(trafficCollisions) {
              //cleanCollisions = cleanCollisions.map(({tb_latitude, tb_longitude}) => ({tb_latitude : Number(tb_latitude), tb_longitude : Number(tb_longitude)}));
              
  
-             let cleanCollision = cleanCollisions[i]
+             //let crash = collisions[i]
              //cleanCollisions = cleanCollisions.map(({tb_latitude, tb_longitude}) => ({tb_latitude : parseFloat(tb_latitude), tb_longitude : parseFloat(tb_longitude)}));
              //cleanCollision.tb_latitude = parseFloat(cleanCollision.tb_latitude.value());
              //cleanCollision.tb_longitude = parseFloat(cleanCollision.tb_longitude.value());
@@ -113,12 +115,12 @@ function createMap(trafficCollisions) {
              
              //console.log(cleanCollisions.keys())
              let collisionMarker = L.marker([cleanCollision['tb_latitude'], cleanCollision['tb_longitude']])
- 
+        
              collisionMarkers.push(collisionMarker);
-     }
- 
-     createMap.map(L.layerGroup(collisionMarkers));
- }
- 
+     
+    } 
+     createMap(L.layerGroup(collisionMarkers));
+  }
+    
  // Perform an API call to the SFGOV API to get the crash information. Call createMarkers when it competes.
  d3.json("https://data.sfgov.org/resource/ubvf-ztfx.json").then(createMarkers)
