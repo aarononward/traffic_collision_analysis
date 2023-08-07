@@ -56,12 +56,8 @@ We are excited to present our analysis on City of San Francisco traffic collisio
  - Business WFH policies
    
 ---------------
-#### Team Members:
-Aaron Morataya-Rodriguez
-Bethania Sequera
-Juliana Lima 
-Michael Bernstein
-Nasr Salahuddin
-Zohair Zulfiqar
+If you have any questions or feedback, please feel free to reach out to any of our team members: Aaron Morataya-Rodriguez, Bethania Sequera, Juliana Lima, Michael Bernstein, Nasr Salahuddin, Zohair Zulfiqar. 
 
-If you have any questions or feedback, please feel free to reach out to any of our team members. Let's make this presentation a great success together. Thank you for your attention, and see you in the presentation!
+Let's make this presentation a great success together. 
+
+Thank you for your attention, and see you in the presentation!
