@@ -29,7 +29,7 @@ We will use the City of San Francisco's public data API, which provides informat
    
 --------------
 #### Project Structure
-- data_processing.py: Contains data preprocessing and cleaning functions.
+- data.py: Contains data preprocessing and cleaning functions.
 - database.py: Sets the SQLite database and handles data storage and retrieval.
 - app.py: Implements the Python Flask API, connects to the database, and defines API endpoints.
 - static: Contains JavaScript and CSS files for the frontend web application.
