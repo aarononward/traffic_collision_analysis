@@ -44,11 +44,8 @@ We will use the City of San Francisco's public data API, which provides informat
 - Access the web application at http:
 
 --------------
-We are excited to present our analysis on City of San Francisco traffic collisions. Our team has worked diligently to ensure the project meets all the requirements and delivers valuable insights. We look forward to showcasing our findings and sharing our data story with the audience during the presentation.
+We are excited to present our analysis on City of San Francisco traffic collisions. Our team has worked diligently to ensure the project meets all the requirements and delivers valuable insights. We look forward to showcasing our findings and sharing our data story with the audience: 
 
-If you have any questions or feedback, please feel free to reach out to any of our team members. Let's make this presentation a great success together!
-
-#### Audience:
  - Urban planners
  - First Responders
  - Insurance Companies
@@ -56,8 +53,8 @@ If you have any questions or feedback, please feel free to reach out to any of o
  - Logistic Companies
  - Police Departments
  - Law Enforcement
- - Business wfh policies
-
+ - Business WFH policies
+   
 ---------------
 #### Team Members:
 Aaron Morataya-Rodriguez
@@ -67,4 +64,4 @@ Michael Bernstein
 Nasr Salahuddin
 Zohair Zulfiqar
 
-Thank you for your attention, and see you in the presentation!
+If you have any questions or feedback, please feel free to reach out to any of our team members. Let's make this presentation a great success together. Thank you for your attention, and see you in the presentation!
