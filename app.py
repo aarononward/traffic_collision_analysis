@@ -3,7 +3,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 
 #################################################
@@ -29,15 +29,6 @@ app = Flask(__name__)
 # Flask Routes
 #################################################
 
-@app.route("/")
-def welcome():
-    """List all available api routes."""
-    return (
-        f"Available Routes:<br/>"
-        f"/data<br/>"
-        f"/accident_map<br/>"
-        f"/graphs"
-    )
 
 
 #All Data endpoint
@@ -52,12 +43,10 @@ def return_data():
     return jsonify(sf_collisions)
 
 
+@app.route("/")
+def welcome():
+    return render_template('index.html')
 
-
-###################################################################
-#Nasr's Map end point#
-###################################################################
-# @app.route('/accident_map')
 
 
 
