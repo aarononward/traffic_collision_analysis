@@ -29,10 +29,23 @@ app = Flask(__name__)
 # Flask Routes
 #################################################
 
+#display endpoint options
+@app.route("/")
+def welcome():
+    return (
+        f"Available Routes:<br/>"
+        f"/map<br/>"
+        f"/data<br/>"
+    )
+
+
+#map endpoint
+@app.route("/map")
+def map():
+    return render_template('index.html')
 
 
 #All Data endpoint
-
 @app.route('/data')
 def return_data():
     results = engine.execute('select * from traffic_db').fetchall()
@@ -43,9 +56,6 @@ def return_data():
     return jsonify(sf_collisions)
 
 
-@app.route("/")
-def welcome():
-    return render_template('index.html')
 
 
 
