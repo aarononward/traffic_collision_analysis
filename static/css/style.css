@@ -19,7 +19,7 @@ body,
 }
 
 .legend .no_harm_collision {
-  color: yellow;
+  color: green;
 }
 
 .legend .injury_collision {
