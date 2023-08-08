@@ -4,6 +4,7 @@
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
 
+
   // Initialize layergroups for collisions
   let layers = {
     NO_HARM_COLLISIONS :  new L.layerGroup(),
@@ -33,7 +34,7 @@
    //};
    
    let overlays = {
-     "Traffic Collisions": layers.NO_HARM_COLLISIONS,
+     "Collisions without Injury or Death": layers.NO_HARM_COLLISIONS,
      "Collisions with Injuries" : layers.INJURY_COLLISIONS,
      "Collisions with Fatalities" : layers.FATAL_COLLISIONS,
      "Collisions with Injuries & Fatalities"  : layers.DUAL_HARM_COLLISIONS
@@ -54,28 +55,28 @@
  
 
   //Create legend
-  let info = L.control({
+  let collisionTotals = L.control({
     position : "bottomright"
     });
 
-  info.onAdd = function() {
+  collisionTotals.onAdd = function() {
     let div = L.DomUtil.create("div", "legend");
     return div;
   };
-  //Ass the indo legend to the map
-  info.addTo(map);
+  //Add the info legend to the map
+  collisionTotals.addTo(map);
 
   //Initialize icon object for layer group
 
 let icons = {
     NO_HARM_COLLISIONS: L.ExtraMarkers.icon({
-      icon: 'alert-circle-outline',
+      icon: 'ion-alert-circle-outline',
       iconColor: 'white',
-      markerColor: 'yellow',
+      markerColor: 'green',
       shape: 'circle'
     }),
     INJURY_COLLISIONS: L.ExtraMarkers.icon({
-      icon: 'medkit-outline',
+      icon: 'ion-medkit-outline',
       iconColor: 'white',
       markerColor: 'orange',
       shape: 'square'
@@ -114,7 +115,7 @@ let icons = {
 
     let collisionCount = {
       INJURY_COLLISIONS: 0,
-      CASUALTY_COLLISIONS: 0,
+      FATAL_COLLISIONS: 0,
       NO_HARM_COLLISIONS: 0,
       DUAL_HARM_COLLISIONS:0
     };
@@ -124,13 +125,10 @@ let icons = {
     for (let i=0; i< cleanCollisions.length; i++) {
       let collision = cleanCollisions[i]
       //let location = [collision.tb_latitude,collision.tb_longitude]
-      let injuries = collision.number_injured;
-      let casualties = collision.number_killed; 
-      let crash = Object.assign({}, injuries[i], casualties[i]);
+      //let injuries = collision.number_injured;
+      //let casualties = collision.number_killed; 
+      //let crash = Object.assign({}, injuries[i], casualties[i]);
       
-      //if (collsion.number_injured>= 0 && collision.number_killed >= 0) { 
-      //  collisionType = "FUBAR_COLLSIONS"
-      //} 
       
       if (collision.number_injured <=0 && collision.number_killed <=0){
         collisionType = "NO_HARM_COLLISIONS";
@@ -147,6 +145,8 @@ let icons = {
       }
     collisionCount[collisionType]++;
     
+    
+
     let collisionMarker = L.marker([collision['tb_latitude'], collision['tb_longitude']], {
       icon: icons[collisionType]
     });
@@ -161,15 +161,34 @@ let icons = {
   updateLegend(collisionCount);
   });
 
-  function updateLegend(location,collisionCount) {
+  function updateLegend(collisionCount) {
     document.querySelector(".legend").innerHTML = [
       //"<p class = 'location'> Location: " + location + "</p>",
-      "<p class = 'no_harm_collision'> Property Collisions: " + collisionCount.NO_HARM_COLLISIONS + "</p",
-      "<p class = 'injury_collision'> Injury Collisions: " + collisionCount.INJURY_COLLISIONS + "/<p>",
-      "<p class = 'fatal_collision'> Casualty Collisions: " + collisionCount.FATAL_COLLISIONS + "</p>",
-      "<p class = 'dual_harm_collision'> Casualty Collisions: " + collisionCount.DUAL_HARM_COLLISIONS + "</p>" 
+      "<p class = 'no_harm_collision'> No-Harm Collisions: " + collisionCount.NO_HARM_COLLISIONS + "</p>",
+      "<p class = 'injury_collision'> Injury Collisions: " + collisionCount.INJURY_COLLISIONS + "</p>",
+      "<p class = 'fatal_collision'> Fatal Collisions: " + collisionCount.FATAL_COLLISIONS + "</p>",
+      "<p class = 'dual_harm_collision'> Dual-Harm Collisions: " + collisionCount.DUAL_HARM_COLLISIONS + "</p>" 
     ].join("");
   }
+
+
+
+//Adding code for neighborhood data
+
+//link for GEOjson data
+let neighbourhood_json = "https://data.sfgov.org/api/geospatial/p5b7-5n3h?method=export&format=GeoJSON";
+
+//api call for GEOjson data
+d3.json(neighbourhood_json).then(function(hood_data) {
+  //creating a Geojson layer with the neighbourhood data
+  L.geoJson(hood_data).addTo(map)
+});
+
+//for (let i=0; i< hood_data.length; i++) {
+//  let neighborhood = hood_data[i]
+  
+//}
+
 
  //function createMarkers(response) {
   // let collisions= []
