@@ -9,7 +9,7 @@ from flask import Flask, jsonify
 #################################################
 # Database Setup
 #################################################
-engine = sql.create_engine("sqlite:///traffic_db.sqlite")
+engine = sql.create_engine("sqlite:///data/traffic_db.sqlite")
 
 # reflect an existing database into a new model
 #Base = automap_base()
@@ -44,12 +44,7 @@ def welcome():
 
 @app.route('/data')
 def return_data():
-    session = Session(engine)
-    
-    results= session.query(Data).all()
-
-    session.close()
-
+    results = engine.execute('select * from traffic_db').fetchall()
     sf_collisions=[]
     for each_result in results:
         collision = dict(each_result)
@@ -62,7 +57,7 @@ def return_data():
 ###################################################################
 #Nasr's Map end point#
 ###################################################################
-@app.route('/accident_map')
+# @app.route('/accident_map')
 
 
 
