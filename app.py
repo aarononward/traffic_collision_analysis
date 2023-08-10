@@ -55,6 +55,9 @@ def return_data():
         sf_collisions.append(collision)
     return jsonify(sf_collisions)
 
+@app.route('/images')
+def images():
+    return render_template('image.html')
 
 
 
