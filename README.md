@@ -4,7 +4,7 @@
 # Group 3
 team members: Aaron Morataya-Rodriguez, Bethania Sequera, Juliana Lima, Michael Bernstein, Nasr Salahuddin, Zohair Zulfiqar. 
 
-#Overview
+# Overview
 Welcome to our project, where we analyze traffic collision data in the City of San Francisco. This project aims to answer questions related to the most dangerous locations, factors contributing to increased collisions, collision types in different areas, and the impact of the pandemic on traffic safety. We will create a Python Flask API-powered web application with interactive visualizations to present the findings in a clear and user-friendly manner.
 We will use the City of San Francisco's public data API, which provides information on traffic collisions resulting in injury. The dataset contains traffic collision records with details such as location coordinates, date, time, collision type, and weather conditions.
 
