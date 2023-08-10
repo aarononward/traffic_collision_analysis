@@ -28,27 +28,16 @@
   // Add "streetmap" tile layer to map
   streetmap.addTo(map)
 
-   // Create a baseMaps object to hold the streetmap layer.
-   //let baseMaps = {
-   //  "Street Map": streetmap
-   //};
-   
-   let overlays = {
+  //create overlays 
+  let overlays = {
      "Collisions without Injury or Death": layers.NO_HARM_COLLISIONS,
      "Collisions with Injuries" : layers.INJURY_COLLISIONS,
      "Collisions with Fatalities" : layers.FATAL_COLLISIONS,
      "Collisions with Injuries & Fatalities"  : layers.DUAL_HARM_COLLISIONS
-   };
+  };
  
-   // create the mab object with options/
-   //let map = L.map("map-id", {
-    // center: [37.75709, -122.43979],
-    // zoom: 12,
-    //layers: [streetmap, trafficCollisions]// injuryCollisions, casualtyCollisions]
-  // });
  
-  //Create layer control and add the layer control to the map/
- 
+  //Create layer control and add the layer control to the map
   L.control.layers(null,overlays, {
      collapsed: false
   }).addTo(map);
@@ -59,15 +48,15 @@
     position : "bottomright"
     });
 
+  //add html line connected to the legend
   collisionTotals.onAdd = function() {
     let div = L.DomUtil.create("div", "legend");
     return div;
   };
-  //Add the info legend to the map
+  //Add the collision totals legend to the map
   collisionTotals.addTo(map);
 
-  //Initialize icon object for layer group
-
+//Initialize icon object for layer group
 let icons = {
     NO_HARM_COLLISIONS: L.ExtraMarkers.icon({
       icon: 'ion-alert-circle-outline',
@@ -108,27 +97,21 @@ let icons = {
       }
     };
    
-    //let collision = cleanCollisions[i]
-    //let location = [collision.tb_latitude,collision.tb_longitude]
-    //let injuries = collision.number_injured;
-    //let casualties = collision.number_killed; 
-
+    //Establish counter for each collision
     let collisionCount = {
       INJURY_COLLISIONS: 0,
       FATAL_COLLISIONS: 0,
       NO_HARM_COLLISIONS: 0,
-      DUAL_HARM_COLLISIONS:0
+      DUAL_HARM_COLLISIONS: 0
     };
-
+    
+    
+    //create a collisionType variable
     let collisionType = "";
 
+    //loop through data and serperate into different types
     for (let i=0; i< cleanCollisions.length; i++) {
-      let collision = cleanCollisions[i]
-      //let location = [collision.tb_latitude,collision.tb_longitude]
-      //let injuries = collision.number_injured;
-      //let casualties = collision.number_killed; 
-      //let crash = Object.assign({}, injuries[i], casualties[i]);
-      
+      let collision = cleanCollisions[i]      
       
       if (collision.number_injured <=0 && collision.number_killed <=0){
         collisionType = "NO_HARM_COLLISIONS";
@@ -143,14 +126,18 @@ let icons = {
       else if (collision.number_injured > 0 && collision.number_killed > 0) {
         collisionType = "DUAL_HARM_COLLISIONS"
       }
+    
+    //Adding each collision type to its respective counter
     collisionCount[collisionType]++;
     
     
-
+    //Creating a marker for each collision
     let collisionMarker = L.marker([collision['tb_latitude'], collision['tb_longitude']], {
+      //connecting collision markers to their icons based on type
       icon: icons[collisionType]
     });
 
+    
     collisionMarker.addTo(layers[collisionType]);
 
     collisionMarker.bindPopup("Collision Type: " + collisionType + 
@@ -170,49 +157,3 @@ let icons = {
       "<p class = 'dual_harm_collision'> Dual-Harm Collisions: " + collisionCount.DUAL_HARM_COLLISIONS + "</p>" 
     ].join("");
   }
-
-
-
-//Adding code for neighborhood data
-
-//link for GEOjson data
-let neighbourhood_json = "https://data.sfgov.org/api/geospatial/p5b7-5n3h?method=export&format=GeoJSON";
-
-//api call for GEOjson data
-d3.json(neighbourhood_json).then(function(hood_data) {
-  //creating a Geojson layer with the neighbourhood data
-  L.geoJson(hood_data).addTo(map)
-});
-
-//for (let i=0; i< hood_data.length; i++) {
-//  let neighborhood = hood_data[i]
-  
-//}
-
-
- //function createMarkers(response) {
-  // let collisions= []
-  //   for (let  i = 0; i< response.length; i++) {
-  //    let collision = response[i]
-  //    if (collision.tb_latitude !== null && collision.tb_latitude !== undefined &&  collision.tb_longitude !== null && collision.tb_longitude !== undefined){
-  //      collisions.push(collision);
-  //    }
-  //  }
-  //   console.log(collisions.length)
-    
-    
-  //  let collisionMarkers = [];
-  //    for (let i = 0; i < collisions.length; i++) {
-
-  //      let cleanCollision = collisions[i]
-
-  //    let collisionMarker = L.marker([cleanCollision['tb_latitude'], cleanCollision['tb_longitude']])
-        
-  //      collisionMarkers.push(collisionMarker);
-     
-  //      } 
-  //   createMap(L.layerGroup(collisionMarkers));
-  //}
-    
- // Perform an API call to the SFGOV API to get the crash information. Call createMarkers when it competes.
- // d3.json("https://data.sfgov.org/resource/ubvf-ztfx.json").then(createMarkers)
