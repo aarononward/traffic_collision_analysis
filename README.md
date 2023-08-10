@@ -22,7 +22,7 @@ We will use the City of San Francisco's public data API, which provides informat
  - Create an html index file
  - Accesses all the libraries used in the dashboard
  - Display all the page content we want to show
- - Create a logic js file
+ - Create logic js file
  - Fetches tile layers and sets up the map
  - Uses d3 to fetch data from the endpoint (from flask app)
  - Create style .css file
@@ -41,7 +41,7 @@ We will use the City of San Francisco's public data API, which provides informat
 - Install the required Python packages using pip install -r requirements.txt.
 - Run python data_processing.py to preprocess the data and set up the database.
 - Execute python app.py to start the Flask server and API.
-- Access the web application at http:
+- Access the web application at http: http://127.0.0.1:5000/
 
 --------------
 We are excited to present our analysis on City of San Francisco traffic collisions. Our team has worked diligently to ensure the project meets all the requirements and delivers valuable insights. We look forward to showcasing our findings and sharing our data story with the audience: 
