@@ -36,15 +36,8 @@ def welcome():
         f"Available Routes:<br/>"
         f"/map<br/>"
         f"/data<br/>"
-        f"/images"
+        f"/tables"
     )
-
-
-#map endpoint
-@app.route("/map")
-def map():
-    return render_template('index.html')
-
 
 #All Data endpoint
 @app.route('/data')
@@ -56,9 +49,15 @@ def return_data():
         sf_collisions.append(collision)
     return jsonify(sf_collisions)
 
-@app.route('/images')
+#map endpoint
+@app.route('/map')
+def map():
+    return render_template('index.html')
+
+#tables endpoint
+@app.route('/tables')
 def images():
-    return render_template('image.html')
+    return render_template('tables.html')
 
 
 
