@@ -34,8 +34,8 @@ app = Flask(__name__)
 def welcome():
     return (
         f"Available Routes:<br/>"
-        f"/map<br/>"
         f"/data<br/>"
+        f"/map<br/>"
         f"/tables"
     )
 
