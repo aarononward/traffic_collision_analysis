@@ -36,6 +36,7 @@ def welcome():
         f"Available Routes:<br/>"
         f"/map<br/>"
         f"/data<br/>"
+        f"/images"
     )
 
 
