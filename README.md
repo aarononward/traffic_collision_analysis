@@ -1,63 +1,83 @@
-# Traffic Collision Analysis
+# Traffic Collision Analysis in San Francisco
 #### City of San Francisco Traffic Collision Analysis
 
-#### Overview
-Welcome to our project, where we analyze traffic collision data in the City of San Francisco. This project aims to answer questions related to the most dangerous locations, factors contributing to increased collisions, collision types in different areas, and the impact of the pandemic on traffic safety. We will create a Python Flask API-powered web application with interactive visualizations to present the findings in a clear and user-friendly manner.
+# Group 3
+team members: Aaron Morataya-Rodriguez, Bethania Sequera, Juliana Lima, Michael Bernstein, Nasr Salahuddin, Zohair Zulfiqar. 
 
+#Overview
+Welcome to our project, where we analyze traffic collision data in the City of San Francisco. This project aims to answer questions related to the most dangerous locations, factors contributing to increased collisions, collision types in different areas, and the impact of the pandemic on traffic safety. We will create a Python Flask API-powered web application with interactive visualizations to present the findings in a clear and user-friendly manner.
 We will use the City of San Francisco's public data API, which provides information on traffic collisions resulting in injury. The dataset contains traffic collision records with details such as location coordinates, date, time, collision type, and weather conditions.
 
-#### API: https://data.sfgov.org/Public-Safety/Traffic-Crashes-Resulting-in-Injury/ubvf-ztfx 
+## Questions Explored
 
---------------
-#### Process:
- - Request API endpoint using the crash data
- - Use pandas to clean up the data received
- - Save this data as a SQLite database
- - Create a flask app with different endpoints
-     - One endpoint should read from the SQLite database and return a jsonified result
-         - Graphs:
-             - Crash data per year bar graphs
-             - Crash data 2018 - 2023 line graph
-         - Map for crash data
- - Create an html index file
- - Accesses all the libraries used in the dashboard
- - Display all the page content we want to show
- - Create logic js file
- - Fetches tile layers and sets up the map
- - Uses d3 to fetch data from the endpoint (from flask app)
- - Create style .css file
-   
---------------
-#### Project Structure
-- data.py: Contains data preprocessing and cleaning functions.
-- database.py: Sets the SQLite database and handles data storage and retrieval.
-- app.py: Implements the Python Flask API, connects to the database, and defines API endpoints.
-- static: Contains JavaScript and CSS files for the frontend web application.
-- templates: Holds HTML templates for the webpages displaying visualizations.
-  
---------------
-#### Getting Started
-- Clone this repository to your local machine.
-- Install the required Python packages using pip install -r requirements.txt.
-- Run python data_processing.py to preprocess the data and set up the database.
-- Execute python app.py to start the Flask server and API.
-- Access the web application at http: http://127.0.0.1:5000/
+The analysis addresses the following questions:
 
---------------
-We are excited to present our analysis on City of San Francisco traffic collisions. Our team has worked diligently to ensure the project meets all the requirements and delivers valuable insights. We look forward to showcasing our findings and sharing our data story with the audience: 
+1. What areas in San Francisco have the highest density of collisions?
+2. Were there fewer accidents during the COVID-19 lockdowns compared to the present?
+3. Are fatal accidents more prevalent than non-fatal accidents?
+4. Do densely populated areas experience more car accidents?
+5. Which days of the week experience the highest frequency of accidents?
 
- - Urban planners
- - First Responders
- - Insurance Companies
- - Traffic Engineers
- - Logistic Companies
- - Police Departments
- - Law Enforcement
- - Business WFH policies
-   
----------------
-If you have any questions or feedback, please feel free to reach out to any of our team members: Aaron Morataya-Rodriguez, Bethania Sequera, Juliana Lima, Michael Bernstein, Nasr Salahuddin, Zohair Zulfiqar. 
+## Target Audience
 
-Let's make this presentation a great success together. 
+This analysis caters to a diverse audience concerned with traffic safety, including:
 
-Thank you for your attention, and see you in the presentation!
+- First Responders
+- Traffic Engineers
+- Urban Planners
+- Logistic Companies
+- Insurance Companies
+- Work From Home Policy Creators
+
+## Data Discovery and ETL
+
+### Data Set
+The data used in this analysis is sourced from San Francisco Police Department (SFPD) and San Francisco Department of Public Health (SFDPH). It encompasses all injury-causing crashes in San Francisco and is updated quarterly. Each API call returns up to 1,000 records.
+
+### ETL Process
+1. **Extract**: API requests are made to fetch data, which is then transformed into a Pandas dataframe from the resulting JSON.
+2. **Transform**: Data cleaning involves dropping rows without latitude/longitude data or collision time, converting data types, and binning incidents based on time of day.
+3. **Load**: The cleaned data is saved as an SQLite database.
+
+## Flask Web Application
+
+A Flask-based web application provides interactive visualizations and insights derived from the analysis.
+
+### Routes
+- `/map`: Displays the crash locations on an interactive map with JavaScript visualization.
+- `/data`: Provides access to the data stored in the SQLite database.
+- `/images`: Presents various chart analyses.
+
+### Demos
+
+Access the web app locally through: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+## Visualizations
+
+### Visualization #1: Positive Effects of WFH
+This visualization compares collision rates before, during, and after the COVID-19 pandemic, exploring potential positive impacts from Work From Home policies.
+
+### Visualization #2: Safety During Rush Hour?
+An analysis of the most dangerous times to drive in San Francisco, examining if rush hour is truly the riskiest time.
+
+### Visualization #3: Fridays and Collisions
+An investigation into correlations between Fridays and accident occurrences, shedding light on potential factors influencing these patterns.
+
+## Insights
+
+Key findings from the analysis include:
+
+- Non-fatal traffic accidents are more common in San Francisco.
+- Noticeable variations in traffic accidents are observed during and post COVID-19 lockdowns.
+- Accidents are most frequent at the end of the week and concentrated in the downtown area.
+- Van Ness Avenue and Market Street have the highest incidence of traffic accidents.
+
+## Challenges
+
+The analysis faced several challenges:
+
+- Designing informative pop-up icons for the traffic collision map.
+- Attempting to include outlines of different neighborhoods on the map, which was complex due to the numerous neighborhoods in San Francisco.
+- Developing bar graphs for post-COVID and pre-COVID collision analysis.
+
+Feel free to explore the repository's code, data, and visualizations to gain a deeper understanding of San Francisco's traffic accident patterns.
